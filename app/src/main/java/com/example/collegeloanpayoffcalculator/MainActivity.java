@@ -11,6 +11,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
     private EditText editTextYears = null;
     private TextView textViewMonthlyPayment = null;
+    private EditText editTextInterestRate = null;
 
 
     @Override
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         editTextYears = (EditText)findViewById(R.id.editTextYears);
         textViewMonthlyPayment = (TextView)findViewById(R.id.textViewMonthlyPayment);
+        editTextInterestRate = (EditText)findViewById(R.id.editTextInterestRate);
+
     }
 
     public void buttonCalculate_onClick(View v){
@@ -29,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
         int yearsInt = Integer.parseInt(yearsStr);
         System.out.println(yearsInt);
 
-
+        //Interest Rate
+        String interestRateStr = editTextInterestRate.getText().toString();
+        double interestRate = Double.parseDouble(interestRateStr);
+        System.out.println("Interest RATE: ");
+        System.out.println(interestRateStr);
 
         double monthlyPayment = yearsInt * 2.5;
 
