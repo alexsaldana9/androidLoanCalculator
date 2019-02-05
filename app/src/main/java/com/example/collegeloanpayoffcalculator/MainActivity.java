@@ -1,14 +1,11 @@
 package com.example.collegeloanpayoffcalculator;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewMonthlyPayment = null;
     private EditText editTextInterestRate = null;
     private EditText editTextLoanAmount = null;
-   // private Button  buttonClear = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,26 +23,19 @@ public class MainActivity extends AppCompatActivity {
         textViewMonthlyPayment = (TextView)findViewById(R.id.textViewMonthlyPayment);
         editTextInterestRate = (EditText)findViewById(R.id.editTextInterestRate);
         editTextLoanAmount = (EditText)findViewById(R.id.editTextLoanAmount);
-        Button buttonClear = (Button)findViewById(R.id.buttonClear);
-
-        buttonClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                editTextYears.setText("");
-                editTextInterestRate.setText("");
-                editTextLoanAmount.setText("");
-                textViewMonthlyPayment.setText("");
-
-            }
-        });
-
     }
 
-
+    public void buttonClear_onClick(View v) {
+        editTextYears.setText("");
+        editTextInterestRate.setText("");
+        editTextLoanAmount.setText("");
+        textViewMonthlyPayment.setText("");
+    }
 
     public void buttonCalculate_onClick(View v){
         System.out.println("Calculating...");
+
+
 
         int numMonths = readNumMonths();
         double interestDecimal = readInterestDecimal();
