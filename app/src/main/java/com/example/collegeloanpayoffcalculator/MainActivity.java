@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -33,9 +34,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonCalculate_onClick(View v){
+        if (invalidInput()) {
+            System.out.println("Invalid Inputs!");
+            return;
+        }
+
         System.out.println("Calculating...");
-
-
 
         int numMonths = readNumMonths();
         double interestDecimal = readInterestDecimal();
@@ -45,6 +49,28 @@ public class MainActivity extends AppCompatActivity {
         double loanPayment = readLoanPayment(loanAmount, discountFactor);
 
         displayLoanPayment(loanPayment);
+    }
+
+    private boolean invalidInput() {
+        String years = editTextYears.getText().toString();
+        if (years.matches("")) {
+            Toast.makeText(this, "You did not enter number of years", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        String interest = editTextInterestRate.getText().toString();
+        if (interest.matches("")) {
+            Toast.makeText(this, "You did not enter the interest", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        String loan = editTextLoanAmount.getText().toString();
+        if (loan.matches("")) {
+            Toast.makeText(this, "You did not enter a loan amount", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        return false;
     }
 
     private void displayLoanPayment(double loanPayment) {
